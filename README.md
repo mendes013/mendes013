@@ -82,7 +82,90 @@ python example.py
 | `append_results_to_sheet(source, results, ...)` | Adiciona coluna de respostas no Excel original |
 | `generate_report(prompt, output_path, ...)` | Gera relatório Excel via Claude |
 
+## Deploy na Hostinger VPS
+
+A integração pode ser executada como uma **API REST** na VPS Hostinger (Ubuntu 24.04).
+
+### Pré-requisitos
+
+- VPS Hostinger com Ubuntu 24.04 (ex: `ssh root@72.60.12.66`)
+- Chave da API Anthropic (`sk-ant-...`)
+
+### Instalação
+
+```bash
+# 1. Clone o repositório na VPS
+ssh root@72.60.12.66
+git clone https://github.com/mendes013/mendes013.git /tmp/claude-setup
+cd /tmp/claude-setup
+
+# 2. Execute o script de instalação (como root)
+bash hostinger_setup.sh
+```
+
+O script realiza automaticamente:
+- Instala Python 3 e dependências do sistema
+- Cria `/opt/claude-api/` com ambiente virtual
+- Instala as dependências Python
+- Registra o serviço `claude-api` no systemd
+
+### Configuração
+
+```bash
+# Edite o arquivo de variáveis de ambiente e insira sua chave
+nano /etc/claude-api.env
+```
+
+```env
+ANTHROPIC_API_KEY=sk-ant-SUA_CHAVE_AQUI
+API_HOST=0.0.0.0
+API_PORT=8000
+```
+
+### Iniciar o serviço
+
+```bash
+systemctl start claude-api
+systemctl status claude-api
+```
+
+### Endpoints da API
+
+| Método | Rota | Descrição |
+|--------|------|-----------|
+| `GET` | `/health` | Verifica se o serviço está rodando |
+| `POST` | `/analyze` | Analisa uma planilha Excel com um prompt |
+| `POST` | `/analyze-structured` | Análise com resposta JSON estruturada |
+| `POST` | `/generate-report` | Gera um relatório Excel com o Claude |
+
+Documentação interativa disponível em: `http://72.60.12.66:8000/docs`
+
+### Exemplo de uso via curl
+
+```bash
+# Verificar saúde
+curl http://72.60.12.66:8000/health
+
+# Analisar planilha
+curl -X POST http://72.60.12.66:8000/analyze \
+  -F "file=@vendas.xlsx" \
+  -F "prompt=Quais são os 3 produtos com maior faturamento?"
+```
+
+### Logs e manutenção
+
+```bash
+journalctl -u claude-api -f      # logs em tempo real
+systemctl restart claude-api      # reiniciar serviço
+systemctl stop claude-api         # parar serviço
+```
+
+---
+
 ## Dependências
 
 - [anthropic](https://pypi.org/project/anthropic/) >= 0.49.0
 - [openpyxl](https://pypi.org/project/openpyxl/) >= 3.1.2
+- [fastapi](https://pypi.org/project/fastapi/) >= 0.115.0
+- [uvicorn](https://pypi.org/project/uvicorn/) >= 0.30.0
+- [python-multipart](https://pypi.org/project/python-multipart/) >= 0.0.9
