@@ -52,6 +52,15 @@ integration.generate_report(
 )
 ```
 
+
+## Relatório simples de vendas
+
+O repositório também inclui um exemplo básico em Python para calcular o total de vendas do dia e gerar um arquivo `relatorio_vendas.txt`:
+
+```bash
+python relatorio_vendas.py
+```
+
 ## Exemplos completos
 
 Execute `example.py` para ver os quatro demos em ação:
