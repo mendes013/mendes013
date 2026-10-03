@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+<title>Investidor Visionário OS — iPad Responsive</title>
+<meta name="theme-color" content="#07121f"/>
+<style>
+:root{
+ --bg:#06101b;--bg2:#091725;--panel:#0c1b2b;--panel2:#10243a;--line:#1d3854;--text:#edf6ff;--muted:#8fa8bf;
+ --blue:#5bb0ff;--cyan:#6ee7e7;--green:#65d68a;--yellow:#ffd166;--red:#ff7f87;--purple:#a78bfa;
+ --shadow:0 16px 42px rgba(0,0,0,.25);--r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;max-width:100%;overflow-x:hidden}
+body{max-width:100%;overflow-x:clip}
+body{margin:0;background:
+radial-gradient(circle at 15% 0%,rgba(91,176,255,.11),transparent 28%),
+radial-gradient(circle at 90% 10%,rgba(167,139,250,.08),transparent 26%),
+linear-gradient(180deg,#06101b,#071320 60%,#07111d);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.app{display:grid;grid-template-columns:255px minmax(0,1fr);min-height:100vh;width:100%;max-width:100%;overflow-x:hidden}
+.sidebar{position:sticky;top:0;height:100vh;background:rgba(5,14,24,.92);border-right:1px solid var(--line);padding:18px;backdrop-filter:blur(18px);z-index:20}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(145deg,var(--blue),var(--purple));display:grid;place-items:center;font-weight:900;color:#04111f;box-shadow:var(--shadow)}
+.brand h1{font-size:15px;line-height:1.05;margin:0;letter-spacing:.4px}
+.brand small{display:block;color:var(--muted);margin-top:4px}
+.nav{display:grid;gap:6px}
+.nav button{width:100%;text-align:left;border:1px solid transparent;background:transparent;color:#b8cbe0;padding:11px 12px;border-radius:12px}
+.nav button:hover,.nav button.active{background:#0e2237;border-color:#203e5d;color:white}
+.nav .ic{display:inline-block;width:26px}
+.side-note{position:absolute;left:18px;right:18px;bottom:18px;border:1px solid var(--line);background:#0a1929;border-radius:14px;padding:12px;font-size:11px;color:var(--muted)}
+.main{min-width:0;max-width:100%;overflow-x:hidden}
+.topbar{position:sticky;top:0;z-index:15;padding:14px 22px;border-bottom:1px solid rgba(29,56,84,.75);background:rgba(6,16,27,.82);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.top-left{display:flex;align-items:center;gap:12px}
+.mobileMenu{display:none}
+.status{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{font-size:11px;border:1px solid var(--line);background:#0c1c2d;padding:7px 9px;border-radius:999px;color:#bcd2e8}
+.dot{width:7px;height:7px;border-radius:50%;display:inline-block;background:var(--green);margin-right:5px}
+.content{padding:24px;max-width:1550px;width:100%;min-width:0;margin:0 auto;overflow-x:hidden}
+.view{display:none;min-width:0;max-width:100%} .view.active{display:block}
+.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:18px;flex-wrap:wrap;min-width:0;max-width:100%}
+.hero h2{font-size:clamp(26px,3.2vw,42px);margin:0;letter-spacing:-1.2px}
+.hero p{color:var(--muted);margin:8px 0 0;max-width:850px}
+.btn{border:1px solid var(--line);background:#11263d;color:#eaf5ff;padding:10px 13px;border-radius:12px;font-weight:700}
+.btn:hover{filter:brightness(1.1)}
+.btn.primary{background:linear-gradient(135deg,var(--blue),#78c4ff);color:#02101d;border:0}
+.btn.good{background:#153624;color:#caffda;border-color:#255b3d}
+.btn.warn{background:#3b2d12;color:#ffe3a4;border-color:#675020}
+.btn.ghost{background:transparent}
+.grid{display:grid;gap:14px;min-width:0;max-width:100%}
+.grid>*{min-width:0;max-width:100%}
+.kpis{grid-template-columns:repeat(5,minmax(0,1fr))}
+.card{background:linear-gradient(180deg,rgba(14,31,49,.96),rgba(10,25,40,.96));border:1px solid var(--line);border-radius:var(--r);box-shadow:0 10px 30px rgba(0,0,0,.14);padding:16px;min-width:0}
+.kpi .label{font-size:11px;text-transform:uppercase;letter-spacing:.75px;color:var(--muted)}
+.kpi .value{font-size:27px;font-weight:900;margin-top:6px}
+.kpi .sub{font-size:11px;color:var(--muted);margin-top:5px}
+.span2{grid-column:span 2} .span3{grid-column:span 3}
+.two{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)} .three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.section{margin-top:18px;min-width:0;max-width:100%}
+.section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 10px;flex-wrap:wrap;min-width:0}
+.section-title h3{margin:0;font-size:17px}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.tiny{font-size:11px}
+.table-wrap{overflow-x:auto;overflow-y:hidden;max-width:100%;min-width:0;border:1px solid var(--line);border-radius:14px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+table{width:100%;border-collapse:collapse;min-width:720px;max-width:100%}
+th,td{padding:11px 10px;border-bottom:1px solid #183049;text-align:left;font-size:12px;vertical-align:top;overflow-wrap:anywhere;word-break:normal}
+th{color:#95aec6;font-weight:700;background:#0a1a2a;position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+.badge{display:inline-block;max-width:100%;padding:5px 8px;border-radius:999px;font-size:10px;line-height:1.25;border:1px solid var(--line);background:#10243a;color:#dbeaff;white-space:normal;overflow-wrap:anywhere;text-align:center}
+.badge.good{background:#123322;border-color:#275c40;color:#aaf0c0} .badge.mid{background:#3d3116;border-color:#6c5724;color:#ffe197}
+.badge.risk{background:#3b1e25;border-color:#6c3540;color:#ffbdc1} .badge.purple{background:#251e43;border-color:#443779;color:#d3c8ff}
+.callout{border-left:3px solid var(--blue);padding:11px 12px;background:#0a1b2c;border-radius:0 12px 12px 0;color:#bcd1e5;font-size:12px}
+.allocBar{height:14px;background:#071421;border-radius:999px;overflow:hidden;display:flex;border:1px solid var(--line)}
+.allocBar span{height:100%}
+.allocLegend{display:flex;gap:12px;flex-wrap:wrap;margin-top:9px;font-size:11px;color:var(--muted)}
+.swatch{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px}
+.searchrow{display:grid;grid-template-columns:1.2fr .7fr .7fr auto;gap:8px;min-width:0;max-width:100%}
+.analyzer-search{grid-template-columns:minmax(170px,1.2fr) minmax(120px,.7fr) minmax(130px,.7fr) auto auto}
+.input,select,textarea{width:100%;background:#071726;color:var(--text);border:1px solid var(--line);border-radius:11px;padding:11px 12px;outline:none}
+.input:focus,select:focus,textarea:focus{border-color:#3f82b9;box-shadow:0 0 0 3px rgba(91,176,255,.08)}
+.tabs{display:flex;gap:7px;flex-wrap:wrap}
+.tab{border:1px solid var(--line);background:#0a1b2c;color:#bcd1e5;padding:7px 10px;border-radius:10px;font-size:11px}
+.tab.active{background:#173854;border-color:#2f668f;color:white}
+.metric-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;min-width:0}
+.metric{padding:12px;border:1px solid var(--line);border-radius:13px;background:#091928}
+.metric .mname{font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.metric .mval{font-size:21px;font-weight:800;margin-top:5px}
+.info{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;border:1px solid #315470;color:#97c7ee;font-size:10px;cursor:help}
+.chart{width:100%;height:230px;border:1px solid var(--line);background:linear-gradient(180deg,#091a2b,#081522);border-radius:14px;padding:10px}
+.chart svg{width:100%;height:100%}
+.score-wrap{display:flex;gap:16px;align-items:center;min-width:0;max-width:100%}
+.score-ring{width:95px;height:95px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) 0 78%,#17304a 78% 100%);position:relative}
+.score-ring:after{content:"";position:absolute;inset:9px;border-radius:50%;background:#0c1d2e}
+.score-ring strong{position:relative;z-index:1;font-size:25px}
+.score-list{display:grid;gap:7px;flex:1;min-width:0}
+.score-item{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px dashed #23425e;padding-bottom:6px;font-size:12px;min-width:0;max-width:100%}
+.score-item>*{min-width:0;max-width:100%;overflow-wrap:anywhere}
+.glossary-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.term{border:1px solid var(--line);background:#0a1b2c;border-radius:14px;padding:14px}
+.term h4{margin:0 0 6px} .term p{font-size:12px;color:#b4c8db;margin:5px 0;line-height:1.5}
+.term .how{color:#8fc4f1}
+.mode-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.mode{border:1px solid var(--line);background:#0a1b2c;padding:12px;border-radius:13px;cursor:pointer}
+.mode.active{border-color:#4e91c4;background:#102c46}
+.mode strong{display:block} .mode span{font-size:11px;color:var(--muted)}
+.promptbox{white-space:pre-wrap;background:#06131f;border:1px solid var(--line);border-radius:14px;padding:14px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11px;color:#cfe3f8;max-height:380px;overflow:auto}
+.portfolio-form{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+details{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#091928;min-width:0;max-width:100%;overflow:hidden}
+summary{cursor:pointer;font-weight:700;display:flex;align-items:flex-start;gap:7px;flex-wrap:wrap;min-width:0;max-width:100%;overflow-wrap:anywhere}
+details p{overflow-wrap:anywhere}
+.radar-row{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(5,minmax(0,.7fr));gap:8px;padding:10px;border-bottom:1px solid #183049;align-items:center;min-width:0}
+.radar-row>*{min-width:0;overflow-wrap:anywhere}
+.radar-row:last-child{border-bottom:0}
+.riskbox{border:1px solid #583642;background:#25151b;border-radius:14px;padding:12px;color:#ffd1d4;font-size:12px}
+.toast{position:fixed;right:20px;bottom:20px;background:#102a42;border:1px solid #315b7b;color:white;padding:12px 14px;border-radius:12px;box-shadow:var(--shadow);display:none;z-index:100}
+dialog{border:1px solid var(--line);background:#0b1b2b;color:white;border-radius:18px;width:min(760px,94vw);padding:18px;box-shadow:var(--shadow)}
+dialog::backdrop{background:rgba(0,0,0,.7)}
+@media(max-width:1180px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .sidebar{position:fixed;left:-285px;top:0;width:270px;height:100dvh;transition:left .22s ease;box-shadow:var(--shadow);overflow-y:auto}
+  .sidebar.open{left:0}
+  .mobileMenu{display:inline-block}
+  .content{max-width:none;padding:20px}
+  .topbar{padding:12px 18px}
+  .two,.three{grid-template-columns:minmax(0,1fr)}
+  .span2,.span3{grid-column:span 1}
+  .kpis{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .metric-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .mode-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .searchrow,.analyzer-search{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .portfolio-form{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .glossary-grid{grid-template-columns:minmax(0,1fr)}
+  .score-wrap{align-items:flex-start}
+  .portfolio-wrap{overflow:visible;border:0;background:transparent}
+  .portfolio-table{display:block;min-width:0;width:100%}
+  .portfolio-table thead{display:none}
+  .portfolio-table tbody{display:grid;gap:10px;width:100%}
+  .portfolio-table tr{display:block;width:100%;border:1px solid var(--line);border-radius:13px;padding:10px 12px;background:#091928}
+  .portfolio-table td{display:grid;grid-template-columns:minmax(105px,30%) minmax(0,1fr);gap:10px;width:100%;border:0;padding:6px 0;align-items:start}
+  .portfolio-table td::before{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700}
+  .snapshot-responsive td:nth-child(1)::before{content:"Instituição"}.snapshot-responsive td:nth-child(2)::before{content:"Ativo"}.snapshot-responsive td:nth-child(3)::before{content:"Classe"}.snapshot-responsive td:nth-child(4)::before{content:"Valor"}.snapshot-responsive td:nth-child(5)::before{content:"Status"}.snapshot-responsive td:nth-child(6)::before{content:"Tese / função"}
+  .positions-responsive td:nth-child(1)::before{content:"Ticker"}.positions-responsive td:nth-child(2)::before{content:"Ativo"}.positions-responsive td:nth-child(3)::before{content:"Qtd."}.positions-responsive td:nth-child(4)::before{content:"Preço médio"}.positions-responsive td:nth-child(5)::before{content:"Valor-base"}.positions-responsive td:nth-child(6)::before{content:"Status"}.positions-responsive td:nth-child(7)::before{content:"Tese"}
+}
+@media(max-width:760px){
+  .content{padding:15px}
+  .topbar{padding:10px 12px;align-items:flex-start;flex-wrap:wrap}
+  .top-left{min-width:0;flex:1}
+  .status{width:100%}
+  .status .hide-mobile{display:none}
+  .hero{align-items:flex-start}
+  .hero h2{font-size:30px}
+  .hero>div,.hero>.btn,.hero>button{max-width:100%}
+  .kpis{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .metric-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .mode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .searchrow,.analyzer-search,.portfolio-form{grid-template-columns:minmax(0,1fr)}
+  .score-wrap{flex-direction:column}
+  .score-ring{flex:0 0 auto}
+  .radar-row{grid-template-columns:minmax(0,1fr);gap:4px;border:1px solid var(--line);border-radius:12px;margin-bottom:8px}
+  .radar-row.small.muted{display:none}
+  .portfolio-table td{grid-template-columns:minmax(90px,34%) minmax(0,1fr)}
+}
+@media(max-width:480px){
+  .kpis,.metric-grid,.mode-grid{grid-template-columns:minmax(0,1fr)}
+  .content{padding:12px}
+  .card{padding:13px}
+  .kpi .value{font-size:23px}
+  .btn{width:100%}
+  .tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+  .tab{width:100%}
+}
+
+@media(max-width:1024px){
+  .transactions-responsive td:nth-child(1)::before{content:"Data"}
+  .transactions-responsive td:nth-child(2)::before{content:"Tipo"}
+  .transactions-responsive td:nth-child(3)::before{content:"Ativo"}
+  .transactions-responsive td:nth-child(4)::before{content:"Qtd."}
+  .transactions-responsive td:nth-child(5)::before{content:"Valor"}
+  .transactions-responsive td:nth-child(6)::before{content:"Instituição"}
+  .transactions-responsive td:nth-child(7)::before{content:"Observação"}
+}
+
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="logo">IV</div>
+      <div><h1>INVESTIDOR<br/>VISIONÁRIO OS</h1><small>Capital Intelligence</small></div>
+    </div>
+    <div class="nav">
+      <button class="active" data-view="dashboard"><span class="ic">◫</span> Visão Geral</button>
+      <button data-view="portfolio"><span class="ic">◈</span> Minha Carteira</button>
+      <button data-view="analyzer"><span class="ic">◎</span> Analisar Ativo</button>
+      <button data-view="radar"><span class="ic">⌁</span> Radar Global</button>
+      <button data-view="shortterm"><span class="ic">⚡</span> Curto Prazo</button>
+      <button data-view="optimizer"><span class="ic">⇄</span> Otimizador</button>
+      <button data-view="academy"><span class="ic">◌</span> Academia</button>
+      <button data-view="agent"><span class="ic">✦</span> Agente IA</button>
+      <button data-view="datahub"><span class="ic">⌘</span> Dados & Backup</button>
+    </div>
+    <div class="side-note">
+      <strong>Princípio do sistema</strong><br/>
+      Dados → tese → risco → cenário → decisão.<br/>
+      Nunca usar preço isolado como argumento.
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <div class="top-left">
+        <button class="btn ghost mobileMenu" id="menuBtn">☰</button>
+        <div><strong id="topTitle">Visão Geral</strong><div class="tiny muted">Carteira + aprendizado + inteligência de mercado • Cloud + Automação + iPad</div></div>
+      </div>
+      <div class="status">
+        <span class="pill"><span class="dot"></span>Local ativo</span>
+        <span class="pill hide-mobile">Carteira-base: 24/09/2026</span>
+        <span class="pill hide-mobile" id="autoWorkerPill">Worker automático: 1h</span>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <section class="view active" id="dashboard">
+        <div class="hero">
+          <div>
+            <h2>Seu cockpit de investimentos.</h2>
+            <p>Uma central para acompanhar patrimônio, estudar empresas, registrar teses, simular realocações e transformar cada análise em aprendizado.</p>
+          </div>
+          <button class="btn primary" onclick="go('analyzer')">Analisar uma empresa</button>
+        </div>
+        <div class="grid kpis" id="dashboardKpis"></div>
+
+        <div class="section grid two">
+          <div class="card">
+            <div class="section-title"><h3>Mapa patrimonial identificado</h3><span class="badge mid">snapshot, não cotação ao vivo</span></div>
+            <div id="allocationBlock"></div>
+          </div>
+          <div class="card">
+            <div class="section-title"><h3>Diretriz estratégica original</h3></div>
+            <div class="score-wrap">
+              <div class="score-ring" style="background:conic-gradient(var(--blue) 0 90%,#17304a 90% 100%)"><strong>90/10</strong></div>
+              <div>
+                <strong>Núcleo defensivo + crescimento controlado</strong>
+                <p class="small muted">Preservação, liquidez e renda como núcleo; crescimento por diversificação global e satélites de risco limitado.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section grid three">
+          <div class="card"><div class="section-title"><h3>Supabase</h3><span class="badge good">backend pronto</span></div><p class="small muted">Banco, RLS, carteira, histórico, pesquisas, radar, transações e fontes.</p></div>
+          <div class="card"><div class="section-title"><h3>CoinGecko</h3><span class="badge good">conector disponível</span></div><p class="small muted">Cripto, preço, volume, histórico, tendências, categorias e notícias.</p></div>
+          <div class="card"><div class="section-title"><h3>IBKR</h3><span class="badge good">conector disponível</span></div><p class="small muted">Mercado global, posições, cotações, performance, watchlists e alertas.</p></div>
+        </div>
+
+        <div class="section grid two">
+          <div class="card">
+            <div class="section-title"><h3>Posições que exigem atenção</h3><button class="btn ghost" onclick="go('portfolio')">Abrir carteira</button></div>
+            <div id="attentionList"></div>
+          </div>
+          <div class="card">
+            <div class="section-title"><h3>Próximas análises úteis</h3></div>
+            <div class="score-list">
+              <div class="score-item"><span>Conciliação Nubank / XP / InfinitePay</span><span class="badge mid">prioridade</span></div>
+              <div class="score-item"><span>TSMC34: fundamentos + valuation + risco geopolítico</span><span class="badge">estudo</span></div>
+              <div class="score-item"><span>Nubank × XP × exterior</span><span class="badge">simulação</span></div>
+              <div class="score-item"><span>Definir capital separado para curto prazo</span><span class="badge risk">controle de risco</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="portfolio">
+        <div class="hero">
+          <div><h2>Minha Carteira</h2><p>Separação rigorosa entre fotografia atual, posições confirmadas, registros antigos, planejados e encerrados.</p></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn" onclick="queuePortfolioRefresh()">Atualizar carteira</button>
+            <button class="btn" onclick="document.getElementById('transactionDialog').showModal()">Registrar movimentação</button>
+            <button class="btn primary" onclick="document.getElementById('addPositionDialog').showModal()">+ Adicionar posição</button>
+          </div>
+        </div>
+        <div class="grid kpis" id="portfolioKpis"></div>
+
+        <div class="section card">
+          <div class="section-title"><h3>Fotografia consolidada</h3><span class="badge good">24/09/2026</span></div>
+          <div class="table-wrap portfolio-wrap"><table class="portfolio-table snapshot-responsive"><thead><tr><th>Instituição</th><th>Ativo</th><th>Classe</th><th>Valor</th><th>Status</th><th>Tese / função</th></tr></thead><tbody id="snapshotTable"></tbody></table></div>
+        </div>
+
+        <div class="section card">
+          <div class="section-title"><h3>Posições individuais confirmadas</h3><span class="badge">requer cotação atual</span></div>
+          <div class="table-wrap portfolio-wrap"><table class="portfolio-table positions-responsive"><thead><tr><th>Ticker</th><th>Ativo</th><th>Qtd.</th><th>Preço médio</th><th>Valor-base</th><th>Status</th><th>Tese</th></tr></thead><tbody id="positionsTable"></tbody></table></div>
+        </div>
+
+        <div class="section card">
+          <div class="section-title">
+            <h3>Movimentações</h3>
+            <span class="badge">compras • vendas • rendimentos • aportes</span>
+          </div>
+          <div class="table-wrap portfolio-table">
+            <table class="transactions-responsive">
+              <thead><tr><th>Data</th><th>Tipo</th><th>Ativo</th><th>Qtd.</th><th>Valor</th><th>Instituição</th><th>Observação</th></tr></thead>
+              <tbody id="transactionsBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="section grid two">
+          <div class="card">
+            <div class="section-title"><h3>Registros anteriores / conciliação</h3></div>
+            <div id="refreshList"></div>
+          </div>
+          <div class="card">
+            <div class="section-title"><h3>Planejados / estudados</h3></div>
+            <div id="plannedList"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="analyzer">
+        <div class="hero">
+          <div><h2>Analisar Ativo</h2><p>Preço + fundamentos + dívida + rentabilidade + valuation + riscos + tese. A interface aceita dados atuais em JSON e transforma tudo no mesmo padrão.</p></div>
+        </div>
+        <div class="card">
+          <div class="searchrow analyzer-search">
+            <input class="input" id="tickerInput" value="AAPL" placeholder="AAPL, TSMC34, CSNA3..."/>
+            <select id="assetMarket"><option>Automático</option><option>EUA</option><option>Brasil</option><option>Global</option></select>
+            <select id="analysisMode"><option>Fundamentalista</option><option>Renda</option><option>Crescimento</option><option>Valor</option></select>
+            <button class="btn primary" onclick="buildResearchRequest()">Preparar pesquisa</button>
+          </div>
+          <div class="tabs section" id="timeTabs">
+            <button class="tab" data-range="1D">Hoje</button><button class="tab" data-range="1W">1 semana</button><button class="tab" data-range="1M">1 mês</button>
+            <button class="tab" data-range="3M">3 meses</button><button class="tab" data-range="6M">6 meses</button><button class="tab active" data-range="1Y">1 ano</button>
+            <button class="tab" data-range="3Y">3 anos</button><button class="tab" data-range="5Y">5 anos</button><button class="tab" data-range="10Y">10 anos</button><button class="tab" data-range="MAX">Máximo</button>
+          </div>
+        </div>
+
+        <div class="section grid two">
+          <div class="card">
+            <div class="section-title"><h3 id="anCompany">Apple Inc. • AAPL</h3><span id="anFresh" class="badge mid">DEMO</span></div>
+            <div class="chart" id="priceChart"></div>
+          </div>
+          <div class="card">
+            <div class="section-title"><h3>Raio-X fundamentalista</h3></div>
+            <div class="score-wrap">
+              <div class="score-ring" id="qualityRing"><strong id="qualityScore">—</strong></div>
+              <div class="score-list" id="scoreList"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section card">
+          <div class="section-title"><h3>Indicadores</h3><button class="btn" onclick="document.getElementById('importAnalysisDialog').showModal()">Importar JSON atual</button></div>
+          <div class="metric-grid" id="metricGrid"></div>
+        </div>
+
+        <div class="section card">
+          <div class="section-title"><h3>Histórico financeiro</h3><span class="small muted">Valores seguem a unidade informada pela fonte</span></div>
+          <div class="table-wrap"><table><thead><tr><th>Ano</th><th>Receita</th><th>Lucro bruto</th><th>Operacional</th><th>Lucro líquido</th><th>FCF</th><th>Dívida</th><th>EPS/LPA</th></tr></thead><tbody id="historyBody"></tbody></table></div>
+        </div>
+
+        <div class="section grid two">
+          <div class="card"><div class="section-title"><h3>Fontes & data</h3></div><div id="analysisSources"></div></div>
+          <div class="card"><div class="section-title"><h3>Caderno de tese</h3></div><textarea id="thesisText" rows="8" placeholder="Por que este ativo existe na carteira? O que precisa acontecer para a tese funcionar? O que invalida a tese?"></textarea><button class="btn primary" style="margin-top:8px" onclick="saveThesis()">Salvar tese local</button></div>
+        </div>
+      </section>
+
+      <section class="view" id="radar">
+        <div class="hero"><div><h2>Radar Global</h2><p>Fila de oportunidades para estudo. O objetivo é explicar <em>por que</em> um ativo entrou no radar, não transformar performance passada em sinal automático.</p></div><button class="btn primary" onclick="buildGlobalRadarPrompt()">Gerar missão de busca global</button></div>
+        <div class="card">
+          <div class="searchrow">
+            <select id="radarClass"><option>Todas as classes</option><option>Ações</option><option>ETFs</option><option>Renda fixa</option><option>FIIs/REITs</option><option>Cripto</option></select>
+            <select id="radarHorizon"><option>Longo prazo</option><option>Renda</option><option>12–24 meses</option><option>Curto prazo</option></select>
+            <select id="radarRisk"><option>Risco equilibrado</option><option>Conservador</option><option>Agressivo</option></select>
+            <button class="btn" onclick="document.getElementById('importRadarDialog').showModal()">Importar resultados</button>
+          </div>
+        </div>
+        <div class="section card">
+          <div class="radar-row small muted"><strong>Ativo</strong><strong>Classe</strong><strong>Horizonte</strong><strong>Tese</strong><strong>Risco</strong><strong>Status</strong></div>
+          <div id="radarResults">
+            <div class="callout">O radar está vazio de propósito: ele deve receber dados atuais com data e fonte. Use “Gerar missão de busca global” ou importe uma análise produzida no ChatGPT/conectores.</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="shortterm">
+        <div class="hero"><div><h2>Laboratório de Curto Prazo</h2><p>Ambiente separado do patrimônio principal para estudar setups de 1 dia a poucas semanas. Sem alavancagem por padrão.</p></div></div>
+        <div class="riskbox"><strong>Regra estrutural:</strong> curto prazo é tratado como capital de risco separado. O sistema calcula risco e tamanho de posição antes de olhar ganho potencial.</div>
+        <div class="section grid two">
+          <div class="card">
+            <div class="section-title"><h3>Calculadora de posição</h3></div>
+            <div class="portfolio-form" style="grid-template-columns:1fr 1fr 1fr">
+              <label class="small">Capital do laboratório<input class="input" type="number" id="stCapital" value="5000"/></label>
+              <label class="small">Risco por operação (%)<input class="input" type="number" step=".1" id="stRisk" value="0.5"/></label>
+              <label class="small">Preço de entrada<input class="input" type="number" step=".01" id="stEntry" value="100"/></label>
+              <label class="small">Stop<input class="input" type="number" step=".01" id="stStop" value="97"/></label>
+              <label class="small">Alvo<input class="input" type="number" step=".01" id="stTarget" value="106"/></label>
+              <div style="display:flex;align-items:end"><button class="btn primary" onclick="calcTrade()">Calcular</button></div>
+            </div>
+            <div class="metric-grid section" id="tradeCalc"></div>
+          </div>
+          <div class="card">
+            <div class="section-title"><h3>Checklist do setup</h3></div>
+            <div class="score-list">
+              <div class="score-item"><span>Liquidez / volume suficiente?</span><span class="badge">verificar</span></div>
+              <div class="score-item"><span>Spread aceitável?</span><span class="badge">verificar</span></div>
+              <div class="score-item"><span>Momentum confirmado?</span><span class="badge">verificar</span></div>
+              <div class="score-item"><span>Evento/notícia relevante?</span><span class="badge">verificar</span></div>
+              <div class="score-item"><span>Risco/retorno ≥ 2?</span><span class="badge">calcular</span></div>
+              <div class="score-item"><span>Capital separado do núcleo?</span><span class="badge good">obrigatório</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="section card">
+          <div class="section-title"><h3>Integrações previstas</h3></div>
+          <div class="grid three">
+            <div class="term"><h4>CoinGecko</h4><p>Preço, 1h/24h/7d/30d, volume, market cap, tendências, categorias, histórico e notícias.</p><span class="badge good">conector disponível no ChatGPT</span></div>
+            <div class="term"><h4>IBKR</h4><p>Cotações, posições, P&L, volume, histórico, watchlists e alertas. Instruções de ordem ficam sujeitas a revisão humana.</p><span class="badge good">conector disponível no ChatGPT</span></div>
+            <div class="term"><h4>Bridge</h4><p>O HTML não recebe conectores do ChatGPT diretamente. Use importação estruturada hoje; backend seguro pode automatizar depois.</p><span class="badge mid">arquitetura preparada</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="optimizer">
+        <div class="hero"><div><h2>Otimizador de Instituições</h2><p>Compara onde cada investimento deve ficar antes de qualquer resgate, venda ou transferência.</p></div><button class="btn primary" onclick="queueInstitutionOptimizer()">Enviar comparação ao Worker</button></div>
+        <div class="grid three">
+          <div class="card"><h3>Nubank</h3><p class="small muted">Hoje concentra a maior parte da fotografia da carteira. Pontos a auditar: detalhamento das caixinhas, Tesouro, bolsa e eventual custo de movimentação.</p><span class="badge mid">auditar antes de mover</span></div>
+          <div class="card"><h3>XP + XP Global</h3><p class="small muted">XP já possui CDB confirmado e oferece uma porta para exposição internacional. Comparar custos, câmbio, produtos e conveniência antes de migrar patrimônio.</p><span class="badge">oportunidade de arquitetura</span></div>
+          <div class="card"><h3>IBKR</h3><p class="small muted">Ferramentas globais e acesso amplo. Pode funcionar como camada internacional especializada, sem precisar concentrar todo o patrimônio.</p><span class="badge purple">camada global</span></div>
+        </div>
+        <div class="section card">
+          <div class="section-title"><h3>Simulador de realocação</h3></div>
+          <div class="portfolio-form" style="grid-template-columns:repeat(4,1fr)">
+            <label class="small">Patrimônio-base<input class="input" id="simTotal" type="number" value="199486.49"/></label>
+            <label class="small">% Brasil / BRL<input class="input" id="simBR" type="number" value="95"/></label>
+            <label class="small">% Exterior / moeda forte<input class="input" id="simGlobal" type="number" value="5"/></label>
+            <div style="display:flex;align-items:end"><button class="btn primary" onclick="simulateAllocation()">Simular</button></div>
+          </div>
+          <div id="simResult" class="section"></div>
+        </div>
+      </section>
+
+      <section class="view" id="academy">
+        <div class="hero"><div><h2>Academia do Investidor</h2><p>Entenda o indicador enquanto usa. Pesquise qualquer termo e aprenda definição + interpretação prática.</p></div></div>
+        <div class="card"><input class="input" id="glossarySearch" placeholder="Buscar: ROIC, EBITDA, Dividend Yield, marcação a mercado..." oninput="renderGlossary()"/></div>
+        <div class="section glossary-grid" id="glossaryGrid"></div>
+      </section>
+
+      <section class="view" id="agent">
+        <div class="hero"><div><h2>Agente Especialista IA</h2><p>Perfil de análise disciplinado: evidência, risco, valuation, diversificação e aprendizado. Nada de inventar dados ou transformar euforia em tese.</p></div></div>
+        <div class="mode-grid" id="agentModes">
+          <div class="mode active" data-mode="Longo Prazo"><strong>Longo Prazo</strong><span>Qualidade, crescimento, valuation, tese.</span></div>
+          <div class="mode" data-mode="Renda"><strong>Renda</strong><span>Caixa, dividendos, juros, sustentabilidade.</span></div>
+          <div class="mode" data-mode="Global"><strong>Global</strong><span>País, moeda, setores, concentração e custos.</span></div>
+          <div class="mode" data-mode="Curto Prazo"><strong>Curto Prazo</strong><span>Preço, volume, volatilidade, evento e risco.</span></div>
+          <div class="mode" data-mode="Professor"><strong>Professor</strong><span>Explica cada indicador enquanto analisa.</span></div>
+        </div>
+        <div class="section grid two">
+          <div class="card">
+            <div class="section-title"><h3>Missão do agente</h3></div>
+            <div class="promptbox" id="agentPrompt"></div>
+            <button class="btn primary" style="margin-top:9px" onclick="copyAgentPrompt()">Copiar missão</button>
+          </div>
+          <div class="card">
+            <div class="section-title"><h3>Regras de qualidade</h3></div>
+            <div class="score-list">
+              <div class="score-item"><span>Fonte e data em todo dado de mercado</span><span class="badge good">obrigatório</span></div>
+              <div class="score-item"><span>Separar fato / cálculo / estimativa</span><span class="badge good">obrigatório</span></div>
+              <div class="score-item"><span>Comparar empresa com pares e histórico</span><span class="badge">padrão</span></div>
+              <div class="score-item"><span>Mostrar riscos que invalidam a tese</span><span class="badge">padrão</span></div>
+              <div class="score-item"><span>Explicar o conceito quando usado</span><span class="badge purple">modo professor</span></div>
+              <div class="score-item"><span>Ordem de trade somente após revisão humana</span><span class="badge risk">controle</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="datahub">
+        <div class="hero"><div><h2>Dados & Backup</h2><p>A ferramenta é local-first com sincronização Supabase. O navegador continua funcionando como cache local; use a nuvem e os backups JSON para redundância.</p></div></div>
+        <div class="grid three">
+          <div class="card"><h3>Instalar no iPad</h3><p class="small muted">Versão preparada como PWA para uso em tela cheia quando hospedada por HTTPS.</p><button class="btn primary" onclick="showInstallHelp()">Como instalar</button></div>
+          <div class="card"><h3>Exportar carteira</h3><p class="small muted">Gera um JSON com carteira, teses e configurações locais.</p><button class="btn primary" onclick="exportBackup()">Exportar JSON</button></div>
+          <div class="card"><h3>Importar backup</h3><p class="small muted">Restaura um JSON exportado anteriormente.</p><input id="backupFile" type="file" accept=".json" class="input"/><button class="btn" style="margin-top:8px" onclick="importBackup()">Importar</button></div>
+          <div class="card"><h3>Restaurar base</h3><p class="small muted">Volta aos dados iniciais recuperados das análises anteriores.</p><button class="btn warn" onclick="resetBase()">Restaurar</button></div>
+        </div>
+        <div class="section card">
+          <div class="section-title"><h3>Contrato de dados</h3></div>
+          <p class="small muted">Toda pesquisa externa deve ser transformada em um JSON padronizado antes de entrar na ferramenta. Isso impede que cada site use nomes e unidades diferentes.</p>
+          <div class="promptbox" id="schemaBox"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<div class="toast" id="toast"></div>
+
+
+<dialog id="transactionDialog">
+  <h3>Registrar movimentação</h3>
+  <div class="portfolio-form" style="grid-template-columns:1fr 1fr">
+    <select class="input" id="txType">
+      <option value="buy">Compra</option><option value="sell">Venda</option>
+      <option value="dividend">Dividendo</option><option value="interest">Juros/Rendimento</option>
+      <option value="contribution">Aporte</option><option value="withdrawal">Resgate</option>
+      <option value="fee">Taxa</option><option value="tax">Imposto</option><option value="other">Outro</option>
+    </select>
+    <input class="input" id="txAsset" placeholder="Ticker / ativo"/>
+    <input class="input" id="txInstitution" placeholder="Instituição"/>
+    <input class="input" type="datetime-local" id="txDate"/>
+    <input class="input" type="number" step=".0001" id="txQty" placeholder="Quantidade"/>
+    <input class="input" type="number" step=".01" id="txPrice" placeholder="Preço"/>
+    <input class="input" type="number" step=".01" id="txAmount" placeholder="Valor líquido"/>
+    <input class="input" id="txCurrency" value="BRL" placeholder="Moeda"/>
+  </div>
+  <textarea class="input" id="txNotes" rows="3" placeholder="Observação" style="margin-top:8px"></textarea>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px">
+    <button class="btn" onclick="this.closest('dialog').close()">Cancelar</button>
+    <button class="btn primary" onclick="addTransaction()">Salvar movimentação</button>
+  </div>
+</dialog>
+
+<dialog id="addPositionDialog">
+  <h3>Adicionar posição manual</h3>
+  <div class="portfolio-form" style="grid-template-columns:1fr 1fr">
+    <input class="input" id="apTicker" placeholder="Ticker / título"/>
+    <input class="input" id="apAsset" placeholder="Nome do ativo"/>
+    <input class="input" id="apInst" placeholder="Instituição"/>
+    <input class="input" id="apClass" placeholder="Classe"/>
+    <input class="input" type="number" step=".0001" id="apQty" placeholder="Quantidade"/>
+    <input class="input" type="number" step=".01" id="apAvg" placeholder="Preço médio"/>
+    <input class="input" type="number" step=".01" id="apAmount" placeholder="Valor-base"/>
+    <input class="input" id="apCurrency" value="BRL" placeholder="Moeda"/>
+  </div>
+  <textarea class="input" id="apThesis" rows="4" placeholder="Tese / função na carteira" style="margin-top:8px"></textarea>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px"><button class="btn" onclick="this.closest('dialog').close()">Cancelar</button><button class="btn primary" onclick="addPosition()">Adicionar</button></div>
+</dialog>
+
+<dialog id="importAnalysisDialog">
+  <h3>Importar análise em JSON</h3>
+  <p class="small muted">Cole o JSON devolvido pela pesquisa. A interface recalcula o raio-X automaticamente.</p>
+  <textarea class="input" id="analysisJson" rows="18"></textarea>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px"><button class="btn" onclick="this.closest('dialog').close()">Cancelar</button><button class="btn primary" onclick="importAnalysis()">Aplicar</button></div>
+</dialog>
+
+<dialog id="researchDialog">
+  <h3 id="researchTitle">Missão de pesquisa</h3>
+  <textarea class="input" id="researchText" rows="22"></textarea>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px"><button class="btn" onclick="this.closest('dialog').close()">Fechar</button><button class="btn primary" onclick="copyResearch()">Copiar</button></div>
+</dialog>
+
+<dialog id="importRadarDialog">
+  <h3>Importar Radar</h3>
+  <p class="small muted">Formato esperado: lista JSON com asset, class, horizon, thesis, risk, status.</p>
+  <textarea class="input" id="radarJson" rows="15" placeholder='[{"asset":"...","class":"...","horizon":"...","thesis":"...","risk":"...","status":"Estudar"}]'></textarea>
+  <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px"><button class="btn" onclick="this.closest('dialog').close()">Cancelar</button><button class="btn primary" onclick="importRadar()">Aplicar</button></div>
+</dialog>
+
+<script>
+const SEED={"snapshotDate": "2026-09-24", "identifiedTotal": 199486.49, "strategy": {"originalCapital": 220000, "coreDefensiveTargetPct": 90, "growthTargetPct": 10, "goals": ["Preservação patrimonial", "Liquidez", "Renda mensal", "Crescimento com diversificação"], "constraints": ["Sem alavancagem como padrão", "Separar capital de curto prazo do patrimônio principal"]}, "currentSnapshot": [{"id": "nubank-caixinhas", "institution": "Nubank", "asset": "Caixinhas / RDB", "class": "Renda fixa / Liquidez", "amount": 136049.86, "currency": "BRL", "status": "CONFIRMADO — fotografia 24/09/2026", "confidence": "alta", "thesis": "Núcleo defensivo, liquidez e preservação. Detalhamento por caixinha/taxa ainda precisa ser reconciliado."}, {"id": "nubank-tesouro-bolsa", "institution": "Nubank", "asset": "Tesouro + Bolsa", "class": "Misto", "amount": 32742.65, "currency": "BRL", "status": "CONFIRMADO — fotografia 24/09/2026", "confidence": "alta", "thesis": "Bloco que inclui Tesouro e renda variável. Registros posteriores indicam Tesouro Selic 2031 em torno de R$ 30,2 mil e bolsa em torno de R$ 2,5 mil; requer conciliação por posição."}, {"id": "nubank-cash", "institution": "Nubank", "asset": "Saldo disponível", "class": "Caixa", "amount": 419.73, "currency": "BRL", "status": "CONFIRMADO — fotografia 24/09/2026", "confidence": "alta", "thesis": "Caixa operacional."}, {"id": "xp-cdb-vw", "institution": "XP", "asset": "CDB Banco Volkswagen", "class": "Renda fixa", "amount": 30274.25, "currency": "BRL", "status": "CONFIRMADO — 24/09/2026", "confidence": "alta", "thesis": "Componente defensivo via XP. Taxa, liquidez e vencimento precisam ser atualizados antes de qualquer resgate ou realocação."}], "positions": [{"id": "tsmc34", "institution": "Nubank / Nu Invest", "ticker": "TSMC34", "asset": "Taiwan Semiconductor Manufacturing Co. BDR", "class": "BDR / Semicondutores", "qty": 2, "avgPrice": 270.0, "amount": 540.0, "currency": "BRL", "status": "POSIÇÃO CONFIRMADA — requer cotação atual", "confidence": "alta", "thesis": "Exposição a semicondutores e à cadeia global de chips. Deve ser acompanhada por crescimento, margens, capex, demanda de IA e risco geopolítico."}, {"id": "wrld11", "institution": "Nubank / Nu Invest", "ticker": "WRLD11", "asset": "ETF global", "class": "ETF / Ações globais", "qty": 7, "avgPrice": 149.53, "amount": 1046.71, "currency": "BRL", "status": "POSIÇÃO CONFIRMADA — requer cotação atual", "confidence": "alta", "thesis": "Núcleo de diversificação global, reduzindo dependência exclusiva do mercado brasileiro."}], "historicalOrNeedsRefresh": [{"id": "infinitepay", "institution": "InfinitePay / CloudWalk", "asset": "CDB 101% CDI", "class": "Renda fixa", "amount": 35489.3, "currency": "BRL", "status": "REGISTRO ANTERIOR — saldo em relatório até 15/09/2026; não incluído no consolidado de 24/09", "confidence": "média", "thesis": "Renda fixa pós-fixada. Precisa ser conciliada para saber se permanece separada ou se foi movimentada."}, {"id": "nasd11", "institution": "Nubank / Nu Invest", "ticker": "NASD11", "asset": "ETF Nasdaq", "class": "ETF / Tecnologia", "amount": 167.6, "currency": "BRL", "status": "COMPRA HISTORICAMENTE CONFIRMADA EM 14/09 — requer atualização", "confidence": "média", "thesis": "Exposição satélite a tecnologia / Nasdaq; deve permanecer controlada para evitar concentração com TSMC e outras techs."}, {"id": "kncr11", "institution": "Nubank / Nu Invest", "ticker": "KNCR11", "asset": "FII", "class": "FII / Papel", "amount": 106.4, "currency": "BRL", "status": "COMPRA HISTORICAMENTE CONFIRMADA EM 14/09 — requer atualização", "confidence": "média", "thesis": "Componente de renda imobiliária; acompanhar qualidade de crédito, indexadores, distribuição e risco."}, {"id": "bith11", "institution": "Nubank / Nu Invest", "ticker": "BITH11", "asset": "ETF de Bitcoin", "class": "Cripto / ETF", "amount": 88.4, "currency": "BRL", "status": "COMPRA HISTORICAMENTE CONFIRMADA EM 14/09 — requer atualização", "confidence": "média", "thesis": "Satélite de alto risco. Deve permanecer pequeno em relação ao patrimônio total."}, {"id": "emergentes", "institution": "Nubank / Nu Invest", "ticker": "ETF emergentes (ticker a confirmar)", "asset": "ETF de mercados emergentes", "class": "ETF / Emergentes", "amount": 86.12, "currency": "BRL", "status": "COMPRA HISTORICAMENTE CONFIRMADA EM 14/09 — ticker requer confirmação", "confidence": "média", "thesis": "Diversificação geográfica fora de mercados desenvolvidos."}, {"id": "divd11", "institution": "Nubank / Nu Invest", "ticker": "DIVD11", "asset": "ETF de dividendos", "class": "ETF / Dividendos", "amount": 64.78, "currency": "BRL", "status": "COMPRA HISTORICAMENTE CONFIRMADA EM 14/09 — requer atualização", "confidence": "média", "thesis": "Exposição a empresas pagadoras de dividendos; avaliar retorno total e não só yield."}], "planned": [{"asset": "XP Global", "class": "Conta internacional", "status": "DISPONÍVEL / SEM POSIÇÃO CONFIRMADA", "thesis": "Acesso direto a ativos em dólar; comparar custos, câmbio e conveniência com BDRs/ETFs locais e IBKR."}, {"asset": "IBKR", "class": "Conta internacional", "status": "CONTA / ALTERNATIVA ESTUDADA; posição relevante não confirmada", "thesis": "Acesso global e ferramentas de mercado. Separar eventual trading do patrimônio principal."}, {"asset": "IVWO11 / emergentes", "class": "ETF", "status": "PLANEJADO / ESTUDADO", "thesis": "Diversificação internacional em emergentes."}, {"asset": "XPLG11, XPML11, TRXF11", "class": "FIIs", "status": "PLANEJADOS / ESTUDADOS", "thesis": "Renda imobiliária diversificada; ainda não tratar como posições atuais."}], "closed": [{"ticker": "ROXO34", "asset": "Nu Holdings BDR", "status": "POSIÇÃO ENCERRADA", "thesis": "Manter apenas no histórico; não contar na carteira atual."}]};
+const GLOSSARY=[{"term": "Receita", "definition": "Faturamento gerado pelas vendas da empresa antes de descontar custos e despesas.", "interpretation": "Observe crescimento consistente e a qualidade desse crescimento."}, {"term": "Lucro bruto", "definition": "Receita menos o custo direto dos produtos ou serviços vendidos.", "interpretation": "Ajuda a medir poder de preço e eficiência do produto."}, {"term": "EBITDA", "definition": "Lucro antes de juros, impostos, depreciação e amortização.", "interpretation": "Serve para comparar a capacidade operacional, mas não substitui fluxo de caixa."}, {"term": "EBIT", "definition": "Lucro operacional após depreciação e amortização, antes de juros e impostos.", "interpretation": "Mostra o resultado do negócio antes da estrutura financeira."}, {"term": "Lucro líquido", "definition": "Resultado final depois de custos, despesas, juros e impostos.", "interpretation": "Compare com receita, caixa e número de ações."}, {"term": "Margem bruta", "definition": "Lucro bruto dividido pela receita.", "interpretation": "Margens estáveis ou crescentes costumam indicar vantagem econômica ou melhor mix."}, {"term": "Margem EBITDA", "definition": "EBITDA dividido pela receita.", "interpretation": "Útil para eficiência operacional, especialmente ao comparar pares."}, {"term": "Margem operacional", "definition": "EBIT dividido pela receita.", "interpretation": "Mostra quanto sobra das vendas após despesas operacionais."}, {"term": "Margem líquida", "definition": "Lucro líquido dividido pela receita.", "interpretation": "Revela quanto de cada R$ 1 vendido vira lucro final."}, {"term": "Fluxo de Caixa Livre (FCF)", "definition": "Caixa operacional menos investimentos necessários (capex).", "interpretation": "É um dos melhores testes para saber se o lucro contábil vira dinheiro."}, {"term": "ROE", "definition": "Retorno sobre o patrimônio líquido: lucro / patrimônio.", "interpretation": "ROE alto pode ser bom, mas pode ser inflado por dívida ou patrimônio muito baixo."}, {"term": "ROIC", "definition": "Retorno sobre o capital investido.", "interpretation": "Compare com o custo de capital: ROIC persistentemente alto sugere criação de valor."}, {"term": "LPA / EPS", "definition": "Lucro por ação.", "interpretation": "Observe crescimento e diluição/recompras de ações."}, {"term": "Dividend Yield", "definition": "Dividendos pagos em 12 meses divididos pelo preço da ação.", "interpretation": "Yield alto não é automaticamente bom; pode subir porque o preço caiu."}, {"term": "Payout", "definition": "Percentual do lucro distribuído em dividendos.", "interpretation": "Payout muito alto pode limitar reinvestimento ou ser insustentável."}, {"term": "P/L", "definition": "Preço dividido pelo lucro por ação.", "interpretation": "Indica quanto o mercado paga por uma unidade de lucro; deve ser comparado com crescimento e histórico."}, {"term": "P/VP", "definition": "Preço dividido pelo valor patrimonial por ação.", "interpretation": "Mais útil em bancos e negócios patrimoniais; menos útil em empresas intangíveis."}, {"term": "P/FCF", "definition": "Preço dividido pelo fluxo de caixa livre por ação.", "interpretation": "Ajuda a avaliar quanto o investidor paga pelo caixa gerado."}, {"term": "EV/EBITDA", "definition": "Valor da firma dividido pelo EBITDA.", "interpretation": "Permite comparar empresas com estruturas de dívida diferentes."}, {"term": "FCF Yield", "definition": "Fluxo de caixa livre / valor de mercado.", "interpretation": "Quanto de caixa livre a empresa gera em relação ao preço pago."}, {"term": "PEG", "definition": "P/L dividido pelo crescimento esperado dos lucros.", "interpretation": "Tenta relacionar preço ao crescimento; depende muito da qualidade das estimativas."}, {"term": "CAGR", "definition": "Taxa anual composta de crescimento.", "interpretation": "Útil para comparar crescimento em horizontes de 3, 5 ou 10 anos."}, {"term": "Dívida líquida", "definition": "Dívida total menos caixa e equivalentes.", "interpretation": "Mostra a dívida efetiva após considerar a liquidez disponível."}, {"term": "Dívida líquida / EBITDA", "definition": "Alavancagem financeira relativa ao EBITDA.", "interpretation": "Quanto menor, em geral, maior a folga — mas o nível saudável varia por setor."}, {"term": "Cobertura de juros", "definition": "Resultado operacional ou EBITDA dividido pela despesa de juros.", "interpretation": "Mede a capacidade de pagar juros com o resultado do negócio."}, {"term": "Liquidez corrente", "definition": "Ativos circulantes / passivos circulantes.", "interpretation": "Ajuda a avaliar a capacidade de honrar obrigações de curto prazo."}, {"term": "Market Cap", "definition": "Valor de mercado das ações da empresa.", "interpretation": "Preço da ação × número de ações."}, {"term": "Enterprise Value (EV)", "definition": "Valor de mercado + dívida líquida e ajustes.", "interpretation": "Representa o valor econômico aproximado de toda a operação."}, {"term": "Beta", "definition": "Sensibilidade histórica do ativo em relação ao mercado.", "interpretation": "Beta não mede todos os riscos e muda com o tempo."}, {"term": "Volatilidade", "definition": "Amplitude das oscilações de preço.", "interpretation": "Mais volatilidade significa maior dispersão de resultados, não necessariamente perda."}, {"term": "Drawdown", "definition": "Queda do pico até o fundo antes de uma recuperação.", "interpretation": "Muito útil para entender o risco vivido pelo investidor."}, {"term": "Liquidez de mercado", "definition": "Facilidade de comprar ou vender sem mover muito o preço.", "interpretation": "Importante para operações de curto prazo."}, {"term": "Spread", "definition": "Diferença entre melhor preço de compra e melhor preço de venda.", "interpretation": "Spreads maiores aumentam o custo de entrada e saída."}, {"term": "Volume", "definition": "Quantidade/valor negociado em um período.", "interpretation": "No curto prazo, ajuda a confirmar interesse e liquidez."}, {"term": "Momentum", "definition": "Persistência recente de direção do preço.", "interpretation": "É um fator de mercado; não substitui análise de risco."}, {"term": "RSI", "definition": "Índice de Força Relativa, oscilador de 0 a 100.", "interpretation": "Pode indicar força ou exaustão, mas não deve ser usado isoladamente."}, {"term": "Média móvel", "definition": "Média do preço ao longo de uma janela.", "interpretation": "Ajuda a visualizar tendência e níveis dinâmicos."}, {"term": "Suporte e resistência", "definition": "Zonas onde o preço historicamente encontrou demanda ou oferta.", "interpretation": "São áreas, não pontos garantidos."}, {"term": "Stop loss", "definition": "Nível de saída definido para limitar uma perda.", "interpretation": "A distância do stop afeta diretamente o tamanho adequado da posição."}, {"term": "Risco por operação", "definition": "Parcela do capital que você aceita perder se o stop for atingido.", "interpretation": "Permite dimensionar posição com disciplina."}, {"term": "CDI", "definition": "Taxa de referência muito usada na renda fixa brasileira.", "interpretation": "CDBs podem pagar, por exemplo, 100% ou 110% do CDI."}, {"term": "Selic", "definition": "Taxa básica de juros do Brasil.", "interpretation": "Afeta renda fixa, crédito, câmbio e valuation de ativos."}, {"term": "Tesouro Selic", "definition": "Título público pós-fixado ligado à Selic.", "interpretation": "É usado com frequência para reserva e objetivos de menor volatilidade."}, {"term": "Tesouro IPCA+", "definition": "Título público que paga inflação medida pelo IPCA mais uma taxa real.", "interpretation": "Pode oscilar bastante antes do vencimento por marcação a mercado."}, {"term": "Marcação a mercado", "definition": "Atualização diária do preço de um título segundo taxas vigentes.", "interpretation": "Mesmo renda fixa pode ter ganho ou perda no curto prazo."}, {"term": "Duration", "definition": "Sensibilidade aproximada do preço de um título a mudanças de juros.", "interpretation": "Quanto maior a duration, maior a oscilação com as taxas."}, {"term": "FGC", "definition": "Mecanismo de garantia para produtos elegíveis de instituições participantes, dentro de limites e regras vigentes.", "interpretation": "Não trate FGC como substituto para análise de emissor e limites."}, {"term": "ETF", "definition": "Fundo negociado em bolsa que busca seguir uma estratégia ou índice.", "interpretation": "Permite diversificação por meio de uma única cota."}, {"term": "BDR", "definition": "Certificado negociado no Brasil que representa valor mobiliário emitido no exterior.", "interpretation": "Dá exposição internacional, mas envolve estrutura e riscos próprios."}, {"term": "FII", "definition": "Fundo de investimento imobiliário negociado em bolsa.", "interpretation": "Avalie imóveis/crédito, gestão, vacância, indexadores, dívida e distribuição."}, {"term": "DCA / aportes periódicos", "definition": "Estratégia de investir valores ao longo do tempo.", "interpretation": "Reduz dependência de acertar um único ponto de entrada."}, {"term": "Valuation", "definition": "Processo de estimar quanto um ativo vale em relação ao preço.", "interpretation": "Empresa excelente e investimento excelente não são a mesma coisa se o preço for excessivo."}];
+const APPLE_DEMO={"company": {"ticker": "AAPL", "name": "Apple Inc.", "market": "NASDAQ", "currency": "USD", "sector": "Technology", "asOf": "DEMO — substitua por pesquisa atual"}, "metrics": {"revenueCagr5": 8.2, "netIncomeCagr5": 7.1, "fcfCagr5": 6.8, "grossMargin": 46.2, "operatingMargin": 31.5, "netMargin": 25.0, "roe": 150.0, "roic": 55.0, "debtToEbitda": 0.9, "interestCoverage": 28.0, "currentRatio": 0.9, "dividendYield": 0.5, "payout": 15.0, "pe": 0, "pfcf": 0, "evEbitda": 0}, "history": [{"year": 2021, "revenue": 365817, "grossProfit": 152836, "operatingIncome": 108949, "netIncome": 94680, "fcf": 92953, "debt": 124719, "eps": 5.61}, {"year": 2022, "revenue": 394328, "grossProfit": 170782, "operatingIncome": 119437, "netIncome": 99803, "fcf": 111443, "debt": 120069, "eps": 6.11}, {"year": 2023, "revenue": 383285, "grossProfit": 169148, "operatingIncome": 114301, "netIncome": 96995, "fcf": 99584, "debt": 111088, "eps": 6.13}, {"year": 2024, "revenue": 391035, "grossProfit": 180683, "operatingIncome": 123216, "netIncome": 93736, "fcf": 108807, "debt": 106629, "eps": 6.08}], "priceSeries": [180, 183, 181, 185, 190, 188, 194, 196, 193, 199, 202, 201, 205, 207, 210, 208, 214, 216, 219, 221], "sources": [{"name": "Demonstração local", "type": "DEMO", "date": "—", "note": "Use apenas para testar a interface; não é dado atual."}]};
+let state = JSON.parse(localStorage.getItem("ivos_state") || "null") || {portfolio:SEED, customPositions:[], theses:{}, radar:[], analysis:APPLE_DEMO, agentMode:"Longo Prazo", transactions:[]};
+state.transactions = state.transactions || [];
+
+function persist(){localStorage.setItem("ivos_state",JSON.stringify(state));}
+function brl(v){return Number(v||0).toLocaleString("pt-BR",{style:"currency",currency:"BRL"})}
+function num(v,d=2){return v==null||v===""?"—":Number(v).toLocaleString("pt-BR",{maximumFractionDigits:d})}
+function toast(msg){const t=document.getElementById("toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",2200)}
+function go(id){document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));document.getElementById(id).classList.add("active");document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.view===id));const b=document.querySelector(`.nav button[data-view="${id}"]`);document.getElementById("topTitle").textContent=b?b.textContent.trim():"Investidor Visionário OS";document.getElementById("sidebar").classList.remove("open");window.scrollTo(0,0)}
+document.querySelectorAll(".nav button").forEach(b=>b.onclick=()=>go(b.dataset.view));
+document.getElementById("menuBtn").onclick=()=>document.getElementById("sidebar").classList.toggle("open");
+
+function dashboard(){
+ const p=state.portfolio, total=p.identifiedTotal;
+ const current=p.currentSnapshot.reduce((a,x)=>a+x.amount,0);
+ const institutions=[...new Set(p.currentSnapshot.map(x=>x.institution))].length;
+ const k=[
+ ["Patrimônio identificado",brl(total),"Fotografia consolidada"],
+ ["Núcleo defensivo", "≈ 83%","Estimativa histórica; precisa reconciliar composição"],
+ ["Posições confirmadas",p.positions.length+state.customPositions.length,"Tickers / ativos individuais"],
+ ["Instituições no snapshot",institutions,"Nubank + XP"],
+ ["Data-base","24/09/2026","Atualizar antes de decidir"]
+ ];
+ document.getElementById("dashboardKpis").innerHTML=k.map(x=>`<div class="card kpi"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="sub">${x[2]}</div></div>`).join("");
+ const items=p.currentSnapshot.map(x=>({name:x.institution+" • "+x.asset,val:x.amount}));
+ const colors=["var(--blue)","var(--purple)","var(--green)","var(--yellow)"];
+ document.getElementById("allocationBlock").innerHTML=`<div class="allocBar">${items.map((x,i)=>`<span style="width:${x.val/total*100}%;background:${colors[i%colors.length]}"></span>`).join("")}</div><div class="allocLegend">${items.map((x,i)=>`<span><i class="swatch" style="background:${colors[i%colors.length]}"></i>${x.name} — ${brl(x.val)}</span>`).join("")}</div>`;
+ document.getElementById("attentionList").innerHTML=[
+  ["InfinitePay / CloudWalk","Registro anterior não reconciliado com snapshot de 24/09","mid"],
+  ["CDB Banco Volkswagen","Taxa, vencimento e liquidez precisam ser atualizados","mid"],
+  ["TSMC34","Cotação/fundamentos atuais ainda não carregados",""],
+  ["XP Global / IBKR","Arquitetura internacional ainda sem posição relevante confirmada","purple"]
+ ].map(x=>`<div class="score-item"><span><strong>${x[0]}</strong><br/><span class="tiny muted">${x[1]}</span></span><span class="badge ${x[2]}">verificar</span></div>`).join("");
+}
+
+function portfolio(){
+ const p=state.portfolio;
+ const k=[
+ ["Snapshot consolidado",brl(p.identifiedTotal),"24/09/2026"],
+ ["Caixinhas Nubank",brl(136049.86),"maior concentração identificada"],
+ ["XP / CDB VW",brl(30274.25),"posição confirmada"],
+ ["TSMC34","2 cotas","PM R$ 270,00"],
+ ["WRLD11","7 cotas","PM R$ 149,53"]
+ ];
+ document.getElementById("portfolioKpis").innerHTML=k.map(x=>`<div class="card kpi"><div class="label">${x[0]}</div><div class="value">${x[1]}</div><div class="sub">${x[2]}</div></div>`).join("");
+ document.getElementById("snapshotTable").innerHTML=p.currentSnapshot.map(x=>`<tr><td>${x.institution}</td><td><strong>${x.asset}</strong></td><td>${x.class}</td><td>${brl(x.amount)}</td><td><span class="badge good">${x.status}</span></td><td>${x.thesis}</td></tr>`).join("");
+ const pos=[...p.positions,...state.customPositions];
+ document.getElementById("positionsTable").innerHTML=pos.map(x=>`<tr><td><strong>${x.ticker||"—"}</strong></td><td>${x.asset}</td><td>${num(x.qty,4)}</td><td>${x.avgPrice?brl(x.avgPrice):"—"}</td><td>${x.amount?brl(x.amount):"—"}</td><td><span class="badge">${x.status||"MANUAL"}</span></td><td>${x.thesis||""}</td></tr>`).join("");
+ document.getElementById("refreshList").innerHTML=p.historicalOrNeedsRefresh.map(x=>`<details><summary>${x.ticker||x.asset} <span class="badge mid">${x.status}</span></summary><p class="small muted">${x.institution} • ${x.class} • ${x.amount?brl(x.amount):""}</p><p class="small">${x.thesis}</p></details>`).join("<div style='height:7px'></div>");
+ document.getElementById("plannedList").innerHTML=p.planned.map(x=>`<details><summary>${x.asset} <span class="badge purple">${x.status}</span></summary><p class="small muted">${x.class}</p><p class="small">${x.thesis}</p></details>`).join("<div style='height:7px'></div>");
+}
+function addPosition(){
+ const x={
+  id:"custom-"+Date.now(),ticker:apTicker.value.trim().toUpperCase(),asset:apAsset.value.trim(),institution:apInst.value.trim(),
+  class:apClass.value.trim(),qty:Number(apQty.value||0),avgPrice:Number(apAvg.value||0),amount:Number(apAmount.value||0),
+  currency:apCurrency.value.trim()||"BRL",status:"ADICIONADO MANUALMENTE",thesis:apThesis.value.trim()
+ };
+ if(!x.asset&&!x.ticker) return toast("Informe o ativo");
+ state.customPositions.push(x);persist();portfolio();document.getElementById("addPositionDialog").close();toast("Posição adicionada");
+}
+
+
+function renderTransactions(){
+  const el=document.getElementById("transactionsBody"); if(!el) return;
+  const arr=(state.transactions||[]).slice().sort((a,b)=>String(b.trade_date||"").localeCompare(String(a.trade_date||"")));
+  el.innerHTML=arr.length?arr.slice(0,50).map(t=>`<tr>
+    <td>${t.trade_date?new Date(t.trade_date).toLocaleString("pt-BR"):"—"}</td>
+    <td><span class="badge">${t.transaction_type||"—"}</span></td>
+    <td><strong>${t.asset_key||"—"}</strong></td>
+    <td>${num(t.quantity,4)}</td>
+    <td>${t.net_amount!=null?brl(t.net_amount):"—"}</td>
+    <td>${t.institution_name||"—"}</td>
+    <td>${t.notes||""}</td>
+  </tr>`).join(""):`<tr><td colspan="7" class="muted">Nenhuma movimentação registrada ainda.</td></tr>`;
+}
+async function addTransaction(){
+  const trade_date=document.getElementById("txDate").value || new Date().toISOString();
+  const item={
+    id:"localtx-"+Date.now(), transaction_type:document.getElementById("txType").value,
+    asset_key:document.getElementById("txAsset").value.trim().toUpperCase(),
+    institution_name:document.getElementById("txInstitution").value.trim(),
+    trade_date:new Date(trade_date).toISOString(),
+    quantity:Number(document.getElementById("txQty").value||0)||null,
+    price:Number(document.getElementById("txPrice").value||0)||null,
+    net_amount:Number(document.getElementById("txAmount").value||0)||null,
+    currency:document.getElementById("txCurrency").value.trim()||"BRL",
+    notes:document.getElementById("txNotes").value.trim()
+  };
+  if(!item.asset_key && !["contribution","withdrawal","fee","tax","other"].includes(item.transaction_type)) return toast("Informe o ativo.");
+  state.transactions.unshift(item); persist(); renderTransactions();
+  document.getElementById("transactionDialog").close();
+  if(typeof cloudAuth!=="undefined" && cloudAuth?.access_token){
+    try{
+      await supaRest("transactions","POST","",[{
+        asset_key:item.asset_key||null, transaction_type:item.transaction_type, trade_date:item.trade_date,
+        quantity:item.quantity, price:item.price, net_amount:item.net_amount, currency:item.currency,
+        source:"manual", notes:(item.institution_name?item.institution_name+" • ":"")+item.notes,
+        metadata:{institution_name:item.institution_name}
+      }]);
+      toast("Movimentação salva localmente e na nuvem");
+    }catch(e){ toast("Salva localmente; nuvem: "+e.message); }
+  } else toast("Movimentação salva localmente");
+}
+
+const METRICS=[
+ ["Receita CAGR 5a","revenueCagr5","%","CAGR"],["Lucro CAGR 5a","netIncomeCagr5","%","CAGR"],["FCF CAGR 5a","fcfCagr5","%","Fluxo de Caixa Livre (FCF)"],
+ ["Margem bruta","grossMargin","%","Margem bruta"],["Margem operacional","operatingMargin","%","Margem operacional"],["Margem líquida","netMargin","%","Margem líquida"],
+ ["ROE","roe","%","ROE"],["ROIC","roic","%","ROIC"],["Dívida / EBITDA","debtToEbitda","x","Dívida líquida / EBITDA"],
+ ["Cobertura de juros","interestCoverage","x","Cobertura de juros"],["Liquidez corrente","currentRatio","x","Liquidez corrente"],["Dividend Yield","dividendYield","%","Dividend Yield"],
+ ["Payout","payout","%","Payout"],["P/L","pe","x","P/L"],["P/FCF","pfcf","x","P/FCF"],["EV/EBITDA","evEbitda","x","EV/EBITDA"]
+];
+function qualityScore(m){
+ let score=0,max=0;
+ const tests=[[m.revenueCagr5>0,10],[m.netIncomeCagr5>0,12],[m.fcfCagr5>0,12],[m.roic>=10,16],[m.netMargin>0,10],[m.debtToEbitda<3,14],[m.interestCoverage>5,10],[m.payout<80,6],[m.roe>0,10]];
+ tests.forEach(([ok,w])=>{max+=w;if(ok)score+=w}); return Math.round(score/max*100);
+}
+function renderChart(vals){
+ const w=900,h=210,p=14,min=Math.min(...vals),max=Math.max(...vals),range=max-min||1;
+ const pts=vals.map((v,i)=>`${p+i*(w-2*p)/(vals.length-1)},${h-p-(v-min)*(h-2*p)/range}`).join(" ");
+ const area=`${p},${h-p} ${pts} ${w-p},${h-p}`;
+ return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5bb0ff" stop-opacity=".28"/><stop offset="100%" stop-color="#5bb0ff" stop-opacity="0"/></linearGradient></defs><polygon points="${area}" fill="url(#g)"/><polyline points="${pts}" fill="none" stroke="#69b8ff" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>`;
+}
+function analyzer(){
+ const a=state.analysis||APPLE_DEMO,m=a.metrics||{},c=a.company||{};
+ document.getElementById("anCompany").textContent=`${c.name||"Empresa"} • ${c.ticker||"—"}`;
+ document.getElementById("anFresh").textContent=c.asOf||"sem data";
+ document.getElementById("priceChart").innerHTML=renderChart(a.priceSeries||[1,2,1.8,2.3,2.6]);
+ const qs=qualityScore(m);document.getElementById("qualityScore").textContent=qs;document.getElementById("qualityRing").style.background=`conic-gradient(var(--green) 0 ${qs}%,#17304a ${qs}% 100%)`;
+ const rows=[["Crescimento",((m.revenueCagr5||0)+(m.netIncomeCagr5||0))/2>0?"positivo":"atenção"],["Rentabilidade",(m.roic||0)>=10?"forte":"revisar"],["Balanço",(m.debtToEbitda||99)<3?"controlado":"atenção"],["Caixa",(m.fcfCagr5||0)>0?"crescendo":"revisar"],["Valuation",m.pe!=null?`P/L ${num(m.pe,1)}x`:"precisa preço/estimativas atuais"]];
+ document.getElementById("scoreList").innerHTML=rows.map(x=>`<div class="score-item"><span>${x[0]}</span><strong>${x[1]}</strong></div>`).join("");
+ document.getElementById("metricGrid").innerHTML=METRICS.map(([label,key,suffix,term])=>`<div class="metric"><div class="mname"><span>${label}</span><span class="info" title="${gloss(term)}">i</span></div><div class="mval">${m[key]==null?"—":num(m[key])+(suffix||"")}</div></div>`).join("");
+ document.getElementById("historyBody").innerHTML=(a.history||[]).map(r=>`<tr><td>${r.year}</td><td>${num(r.revenue,0)}</td><td>${num(r.grossProfit,0)}</td><td>${num(r.operatingIncome,0)}</td><td>${num(r.netIncome,0)}</td><td>${num(r.fcf,0)}</td><td>${num(r.debt,0)}</td><td>${num(r.eps)}</td></tr>`).join("");
+ document.getElementById("analysisSources").innerHTML=(a.sources||[]).map(s=>`<div class="score-item"><span><strong>${s.url?`<a href="${s.url}" target="_blank" rel="noopener" style="color:inherit">${s.name}</a>`:s.name}</strong><br><span class="tiny muted">${s.type||""} • ${s.date||""}</span></span><span class="tiny">${s.note||""}</span></div>`).join("");
+ const tk=c.ticker||"GEN";document.getElementById("thesisText").value=state.theses[tk]||"";
+}
+function gloss(term){const x=GLOSSARY.find(g=>g.term===term);return x?x.definition+" "+x.interpretation:term}
+function saveThesis(){const tk=(state.analysis.company||{}).ticker||"GEN";state.theses[tk]=document.getElementById("thesisText").value;persist();toast("Tese salva")}
+function importAnalysis(){
+ try{const x=JSON.parse(document.getElementById("analysisJson").value);state.analysis=x;persist();analyzer();document.getElementById("importAnalysisDialog").close();toast("Análise importada")}
+ catch(e){toast("JSON inválido")}
+}
+document.querySelectorAll("#timeTabs .tab").forEach(b=>b.onclick=()=>{document.querySelectorAll("#timeTabs .tab").forEach(x=>x.classList.remove("active"));b.classList.add("active");toast("Período selecionado: "+b.dataset.range+" — carregue série atual para refletir o período")});
+
+function researchSchema(){
+ return {
+  company:{ticker:"",name:"",market:"",currency:"",sector:"",asOf:""},
+  metrics:{revenueCagr5:null,netIncomeCagr5:null,fcfCagr5:null,grossMargin:null,operatingMargin:null,netMargin:null,roe:null,roic:null,debtToEbitda:null,interestCoverage:null,currentRatio:null,dividendYield:null,payout:null,pe:null,pfcf:null,evEbitda:null},
+  history:[{year:2026,revenue:null,grossProfit:null,operatingIncome:null,netIncome:null,fcf:null,debt:null,eps:null}],
+  priceSeries:[],
+  sources:[{name:"",type:"",date:"",note:""}]
+ };
+}
+function buildResearchRequest(){
+ const tk=document.getElementById("tickerInput").value.trim().toUpperCase();
+ const txt=`Pesquise e analise ${tk} para o INVESTIDOR VISIONÁRIO OS.
+
+OBJETIVO
+Produzir um raio-X investidor completo, atual e rastreável.
+
+FONTES
+1. Relações com Investidores e documentos oficiais da empresa.
+2. Regulador/bolsa aplicável: SEC/EDGAR, CVM/B3 ou equivalente.
+3. Dados estruturados de mercado/conectores disponíveis.
+4. Fontes secundárias confiáveis apenas para complementar.
+
+COLETE
+- preço e variações: dia, semana, mês, 3m, 6m, 1a, 3a, 5a, 10a e máximo quando disponível;
+- 5–10 anos de receita, lucro bruto, EBIT, lucro líquido, FCF, dívida e EPS/LPA;
+- margens, ROE, ROIC, dívida/EBITDA, cobertura de juros e liquidez;
+- dividend yield, payout e histórico de dividendos;
+- P/L, P/FCF, EV/EBITDA e contexto histórico / pares;
+- principais drivers, riscos, eventos e pontos que podem invalidar a tese.
+
+REGRAS
+- Nunca inventar.
+- Separar reportado, cálculo e estimativa.
+- Registrar data e fonte.
+- Explicar, em linguagem simples, os indicadores usados.
+- Não chamar valorização passada de oportunidade por si só.
+- Retornar ao final APENAS JSON compatível com este esquema:
+${JSON.stringify(researchSchema(),null,2)}`;
+ document.getElementById("researchTitle").textContent="Missão de pesquisa • "+tk;document.getElementById("researchText").value=txt;document.getElementById("researchDialog").showModal();
+}
+function buildGlobalRadarPrompt(){
+ const txt=`Faça uma busca global de oportunidades PARA ESTUDO para o INVESTIDOR VISIONÁRIO OS.
+
+Contexto da carteira:
+- patrimônio identificado em snapshot de 24/09/2026: aproximadamente R$ 199.486,49;
+- concentração relevante em Nubank/renda fixa e XP;
+- objetivos: preservação, liquidez, renda e crescimento;
+- diversificação internacional é prioridade de estudo;
+- separar curto prazo do núcleo patrimonial;
+- sem alavancagem como padrão.
+
+Escaneie, conforme dados disponíveis e atuais:
+ações, ETFs, BDRs, renda fixa/Tesouro, FIIs/REITs e cripto.
+Para cada candidato, explique POR QUE entrou no radar usando fundamentos, valuation, qualidade, liquidez, risco, catalisadores e horizonte.
+Não trate alta recente como recomendação automática.
+Traga fontes e data.
+
+Retorne ao final uma lista JSON:
+[
+ {"asset":"","class":"","horizon":"","thesis":"","risk":"","status":"Estudar"}
+]`;
+ document.getElementById("researchTitle").textContent="Missão • Radar Global";document.getElementById("researchText").value=txt;document.getElementById("researchDialog").showModal();
+}
+async function copyResearch(){await navigator.clipboard.writeText(document.getElementById("researchText").value);toast("Missão copiada")}
+
+function importRadar(){
+ try{const x=JSON.parse(document.getElementById("radarJson").value);if(!Array.isArray(x))throw 0;state.radar=x;persist();renderRadar();document.getElementById("importRadarDialog").close();toast("Radar importado")}
+ catch(e){toast("JSON inválido")}
+}
+function renderRadar(){
+ const el=document.getElementById("radarResults");
+ if(!state.radar.length) return;
+ el.innerHTML=state.radar.map(r=>`<div class="radar-row"><strong>${r.asset||"—"}</strong><span>${r.class||"—"}</span><span>${r.horizon||"—"}</span><span>${r.thesis||"—"}</span><span class="badge risk">${r.risk||"—"}</span><span class="badge">${r.status||"Estudar"}</span></div>`).join("");
+}
+
+function calcTrade(){
+ const cap=+stCapital.value,riskPct=+stRisk.value,entry=+stEntry.value,stop=+stStop.value,target=+stTarget.value;
+ const riskMoney=cap*riskPct/100,dist=Math.abs(entry-stop),qty=dist>0?Math.floor(riskMoney/dist):0,position=qty*entry,reward=Math.abs(target-entry)*qty,rr=riskMoney?reward/riskMoney:0;
+ document.getElementById("tradeCalc").innerHTML=[
+ ["Risco máximo",brl(riskMoney)],["Qtd. teórica",num(qty,0)],["Valor da posição",brl(position)],["Risco/Retorno",num(rr,2)+"x"]
+ ].map(x=>`<div class="metric"><div class="mname">${x[0]}</div><div class="mval">${x[1]}</div></div>`).join("");
+}
+
+function simulateAllocation(){
+ const total=+simTotal.value,br=+simBR.value,gl=+simGlobal.value,sum=br+gl;
+ if(Math.abs(sum-100)>.01)return toast("Brasil + Exterior deve somar 100%");
+ document.getElementById("simResult").innerHTML=`<div class="allocBar"><span style="width:${br}%;background:var(--blue)"></span><span style="width:${gl}%;background:var(--purple)"></span></div><div class="allocLegend"><span><i class="swatch" style="background:var(--blue)"></i>Brasil / BRL: ${brl(total*br/100)}</span><span><i class="swatch" style="background:var(--purple)"></i>Exterior / moeda forte: ${brl(total*gl/100)}</span></div><div class="callout section">Isto é uma simulação de alocação, não uma instrução de transferência. Antes de mover capital, compare tributação, liquidez, vencimentos, custos de câmbio e se o ativo pode ser transferido sem venda.</div>`;
+}
+
+function renderGlossary(){
+ const q=(document.getElementById("glossarySearch")?.value||"").toLowerCase();
+ const arr=GLOSSARY.filter(x=>(x.term+" "+x.definition+" "+x.interpretation).toLowerCase().includes(q));
+ document.getElementById("glossaryGrid").innerHTML=arr.map(x=>`<div class="term"><h4>${x.term}</h4><p>${x.definition}</p><p class="how"><strong>Como interpretar:</strong> ${x.interpretation}</p></div>`).join("");
+}
+
+function agentText(mode){
+ return `Você é o AGENTE ESPECIALISTA do INVESTIDOR VISIONÁRIO OS.
+Modo atual: ${mode}.
+
+MISSÃO
+Ajudar o investidor a aumentar a qualidade das decisões e o conhecimento, analisando carteira, empresas, renda fixa, ativos globais, ETFs, FIIs, cripto e, quando solicitado, setups de curto prazo.
+
+METODOLOGIA
+1. Comece pela pergunta e pelo horizonte.
+2. Use fontes atuais e registre data.
+3. Separe fato, cálculo, estimativa e hipótese.
+4. Analise risco antes do retorno.
+5. Compare cada investimento com alternativas e com o papel que ele exerce na carteira.
+6. Em ações: negócio, crescimento, margens, FCF, ROIC, dívida, governança, valuation, riscos e catalisadores.
+7. Em renda fixa: emissor, indexador, taxa, prazo, liquidez, tributação, duration e proteção aplicável.
+8. Em exterior: moeda, jurisdição, custos, concentração geográfica e sobreposição.
+9. Em curto prazo: preço, volume, volatilidade, liquidez, evento, stop, risco/retorno e tamanho de posição; não usar alavancagem como padrão.
+10. Quando usar um termo técnico, explique em linguagem simples.
+11. Nunca invente dados ou trate performance passada como garantia.
+12. Diferencie “ativo interessante para estudo” de “decisão executada”.
+13. Mudanças de custódia devem considerar custos, impostos, vencimentos e possibilidade de transferência sem venda.
+
+CONTEXTO DE CARTEIRA
+Snapshot identificado: ~R$ 199.486,49 em 24/09/2026.
+Maior concentração: Nubank / renda fixa e liquidez.
+XP com CDB Banco Volkswagen confirmado.
+TSMC34 e WRLD11 confirmados.
+InfinitePay e posições menores possuem registros anteriores e exigem conciliação.
+XP Global disponível; IBKR estudada como camada internacional.
+Objetivos: preservação, liquidez, renda e crescimento disciplinado.
+
+SAÍDA
+Entregue:
+- leitura executiva;
+- fatos e fontes;
+- análise;
+- riscos;
+- cenários;
+- o que acompanhar;
+- lição do dia;
+- ação sugerida apenas no sentido de próximo passo de análise/gestão, com decisão final do usuário.`;
+}
+function renderAgent(){document.getElementById("agentPrompt").textContent=agentText(state.agentMode)}
+document.querySelectorAll("#agentModes .mode").forEach(m=>m.onclick=()=>{document.querySelectorAll("#agentModes .mode").forEach(x=>x.classList.remove("active"));m.classList.add("active");state.agentMode=m.dataset.mode;persist();renderAgent()})
+async function copyAgentPrompt(){await navigator.clipboard.writeText(document.getElementById("agentPrompt").textContent);toast("Missão do agente copiada")}
+
+function exportBackup(){
+ const blob=new Blob([JSON.stringify(state,null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="investidor-visionario-os-backup.json";a.click();URL.revokeObjectURL(a.href);
+}
+function importBackup(){
+ const f=document.getElementById("backupFile").files[0];if(!f)return toast("Selecione um JSON");
+ const r=new FileReader();r.onload=()=>{try{state=JSON.parse(r.result);persist();renderAll();toast("Backup importado")}catch(e){toast("Arquivo inválido")}};r.readAsText(f);
+}
+function resetBase(){if(!confirm("Restaurar a base inicial e apagar edições locais?"))return;state={portfolio:SEED,customPositions:[],theses:{},radar:[],analysis:APPLE_DEMO,agentMode:"Longo Prazo",transactions:[]};persist();renderAll();toast("Base restaurada")}
+function schemaBox(){document.getElementById("schemaBox").textContent=JSON.stringify(researchSchema(),null,2)}
+function renderAll(){dashboard();portfolio();renderTransactions();analyzer();renderRadar();renderGlossary();renderAgent();schemaBox();calcTrade();simulateAllocation()}
+renderAll();
+</script>
+<script>
+const SUPABASE_URL = "https://umuvmpoqcvugyhxosqke.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_gqJ7n2sj2J6nzcXmrjOieQ_NzokLRKp";
+const SUPABASE_PROJECT_REF = "umuvmpoqcvugyhxosqke";
+const AUTH_STORAGE_KEY = "ivos_supabase_auth";
+let cloudAuth = JSON.parse(localStorage.getItem(AUTH_STORAGE_KEY) || "null");
+
+function btoast(msg){ if(typeof toast==='function') toast(msg); else alert(msg); }
+function cloudHeaders(extra={}){
+  const h={apikey:SUPABASE_PUBLISHABLE_KEY,"Content-Type":"application/json",...extra};
+  if(cloudAuth?.access_token) h.Authorization="Bearer "+cloudAuth.access_token;
+  return h;
+}
+async function refreshCloudTokenIfNeeded(){
+  if(!cloudAuth?.refresh_token) return false;
+  const now=Math.floor(Date.now()/1000);
+  if(cloudAuth.expires_at && cloudAuth.expires_at-now>90) return true;
+  try{
+    const r=await fetch(SUPABASE_URL+"/auth/v1/token?grant_type=refresh_token",{method:"POST",headers:{apikey:SUPABASE_PUBLISHABLE_KEY,"Content-Type":"application/json"},body:JSON.stringify({refresh_token:cloudAuth.refresh_token})});
+    const d=await r.json(); if(!r.ok) throw new Error(d.message||"Sessão expirada");
+    cloudAuth=d; localStorage.setItem(AUTH_STORAGE_KEY,JSON.stringify(d)); return true;
+  }catch(e){ cloudSignOut(false); return false; }
+}
+async function supaRest(table,method="GET",query="",body=null,prefer="return=representation"){
+  if(!cloudAuth?.access_token) throw new Error("Conecte a nuvem primeiro.");
+  await refreshCloudTokenIfNeeded();
+  const url=SUPABASE_URL+"/rest/v1/"+table+(query?"?"+query:"");
+  const opts={method,headers:cloudHeaders({Prefer:prefer})}; if(body!==null) opts.body=JSON.stringify(body);
+  const r=await fetch(url,opts); const txt=await r.text(); let d=null; try{d=txt?JSON.parse(txt):null}catch{d=txt}
+  if(!r.ok) throw new Error((d&&(d.message||d.hint||d.details))||"Erro Supabase "+r.status); return d;
+}
+function ensureCloudUI(){
+  const status=document.querySelector('.topbar .status');
+  if(status && !document.getElementById('cloudStatusPill')){
+    status.insertAdjacentHTML('afterbegin','<span class="pill" id="cloudStatusPill"><span class="dot" id="cloudDot" style="background:var(--yellow)"></span><span id="cloudStatusText">Nuvem desconectada</span></span>');
+    status.insertAdjacentHTML('beforeend','<button class="btn" id="cloudLoginBtn" onclick="openCloudAuth()">Conectar nuvem</button>');
+  }
+  const nav=document.querySelector('.nav');
+  if(nav && !nav.querySelector('[data-view="workqueue"]')){
+    const btn=document.createElement('button'); btn.dataset.view='workqueue'; btn.innerHTML='<span class="ic">↻</span> Work Queue';
+    const dataBtn=nav.querySelector('[data-view="datahub"]'); nav.insertBefore(btn,dataBtn||null); btn.onclick=()=>go('workqueue');
+  }
+  const content=document.querySelector('.content');
+  if(content && !document.getElementById('workqueue')){
+    const section=document.createElement('section'); section.className='view'; section.id='workqueue';
+    section.innerHTML=`
+      <div class="hero"><div><h2>Work Queue</h2><p>A ponte entre a ferramenta, Supabase e os agentes. O Worker automático verifica a fila a cada hora; quando o Work estiver disponível, ele pode processar a mesma fila imediatamente.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" onclick="refreshWorkQueue()">Atualizar fila</button>
+<button class="btn" onclick="checkBackendHealth()">Verificar sistema</button><button class="btn primary" onclick="copyWorkWorkerPrompt()">Copiar missão do Work</button></div></div>
+      <div class="grid kpis" id="workKpis"></div>
+      <div class="section grid two"><div class="card"><div class="section-title"><h3>Fila de pesquisa</h3><span class="badge mid" id="queueAuthBadge">login necessário</span></div><div id="workQueueList"><div class="callout">Conecte a nuvem para criar e acompanhar pesquisas.</div></div></div>
+      <div class="card"><div class="section-title"><h3>Fluxo do Worker</h3></div><div class="score-list"><div class="score-item"><span>1. Lê jobs <b>pending</b></span><span class="badge">Supabase</span></div><div class="score-item"><span>2. Marca <b>running</b></span><span class="badge">controle</span></div><div class="score-item"><span>3. Pesquisa fontes oficiais + mercado</span><span class="badge good">evidência</span></div><div class="score-item"><span>4. Usa CoinGecko / IBKR quando aplicável</span><span class="badge purple">conectores</span></div><div class="score-item"><span>5. Grava métricas, fontes e resultado</span><span class="badge">banco</span></div><div class="score-item"><span>6. Finaliza <b>completed</b></span><span class="badge good">pronto</span></div></div></div></div>
+      <div class="section card"><div class="section-title"><h3>Missão fixa do Worker</h3><span class="badge purple">Projeto: ${SUPABASE_PROJECT_REF}</span></div><div class="promptbox" id="workWorkerPrompt"></div></div>
+      <div class="section card">
+          <div class="section-title"><h3>Processamento automático</h3><span class="badge good">ATIVO</span></div>
+          <p class="small">O <strong>Investidor Queue Worker</strong> verifica a fila automaticamente a cada hora. Se houver tarefa pendente, ele pesquisa, grava fontes e devolve o resultado ao Supabase. Quando o ChatGPT Work estiver disponível, use a mesma fila para processamento sob demanda.</p>
+          <div id="cloudDataSummary" class="callout">Conecte a nuvem para ver o resumo persistido.</div>
+        </div>
+<div class="section riskbox"><strong>Limite técnico atual:</strong> um site externo não consegue iniciar uma sessão do ChatGPT Work por API. O botão “Enviar ao Work” cria uma tarefa real no Supabase. O Work precisa estar aberto com a missão abaixo (ou configurado como rotina no próprio Work) para consumir a fila.</div>`;
+    const datahub=document.getElementById('datahub'); content.insertBefore(section,datahub||null);
+  }
+  if(!document.getElementById('cloudAuthDialog')){
+    document.body.insertAdjacentHTML('beforeend',`<dialog id="cloudAuthDialog"><h3>Conectar Investidor Visionário OS à nuvem</h3><p class="small muted">Use um e-mail e senha para este app. O banco usa RLS: cada usuário acessa apenas seus próprios registros.</p><input class="input" id="cloudEmail" type="email" placeholder="Seu e-mail"><input class="input" id="cloudPassword" type="password" placeholder="Senha (mínimo 8 caracteres)" style="margin-top:8px"><div class="callout" id="authMessage" style="margin-top:10px">Primeiro acesso: clique em “Criar conta”. O Supabase pode pedir confirmação por e-mail.</div><div style="display:flex;justify-content:flex-end;gap:8px;margin-top:10px;flex-wrap:wrap"><button class="btn" onclick="this.closest('dialog').close()">Fechar</button><button class="btn" onclick="cloudSignUp()">Criar conta</button><button class="btn primary" onclick="cloudSignIn()">Entrar</button></div></dialog>`);
+  }
+  const portfolioHero=document.querySelector('#portfolio .hero');
+  if(portfolioHero && !document.getElementById('syncCloudBtn')){
+    const btn=document.createElement('button');btn.id='syncCloudBtn';btn.className='btn';btn.textContent='Sincronizar nuvem';btn.onclick=syncPortfolioToCloud;portfolioHero.appendChild(btn);
+  }
+  const analyzerRow=document.querySelector('#analyzer .searchrow');
+  if(analyzerRow && !document.getElementById('queueCompanyBtn')){
+    const btn=document.createElement('button');btn.id='queueCompanyBtn';btn.className='btn primary';btn.textContent='Enviar ao Work';btn.onclick=queueCompanyResearch;analyzerRow.appendChild(btn);
+  }
+  const radarHero=document.querySelector('#radar .hero');
+  if(radarHero && !document.getElementById('queueRadarBtn')){
+    const btn=document.createElement('button');btn.id='queueRadarBtn';btn.className='btn primary';btn.textContent='Enviar ao Work';btn.onclick=queueGlobalRadar;radarHero.appendChild(btn);
+  }
+  const stHero=document.querySelector('#shortterm .hero');
+  if(stHero && !document.getElementById('queueShortBtn')){
+    const btn=document.createElement('button');btn.id='queueShortBtn';btn.className='btn primary';btn.textContent='Enviar scan ao Work';btn.onclick=queueShortTermScan;stHero.appendChild(btn);
+  }
+  renderWorkPrompt(); updateCloudUI();
+}
+function authMsg(msg,good=false){const el=document.getElementById('authMessage');if(el){el.textContent=msg;el.style.borderLeftColor=good?'var(--green)':'var(--blue)';}}
+function openCloudAuth(){if(cloudAuth?.access_token){if(confirm('Você já está conectado. Deseja sair da nuvem?')) cloudSignOut();return;}document.getElementById('cloudAuthDialog').showModal();}
+async function cloudSignUp(){
+  const email=document.getElementById('cloudEmail').value.trim(),password=document.getElementById('cloudPassword').value;
+  if(!email||password.length<8)return authMsg('Informe e-mail válido e senha com pelo menos 8 caracteres.');authMsg('Criando conta...');
+  try{const r=await fetch(SUPABASE_URL+'/auth/v1/signup',{method:'POST',headers:cloudHeaders(),body:JSON.stringify({email,password})});const d=await r.json();if(!r.ok)throw new Error(d.msg||d.message||'Falha ao criar conta');if(d.access_token){cloudAuth=d;localStorage.setItem(AUTH_STORAGE_KEY,JSON.stringify(d));await afterCloudLogin();document.getElementById('cloudAuthDialog').close();}else authMsg('Conta criada. Confirme o e-mail enviado pelo Supabase e depois volte para entrar.',true);}catch(e){authMsg(e.message);}
+}
+async function cloudSignIn(){
+  const email=document.getElementById('cloudEmail').value.trim(),password=document.getElementById('cloudPassword').value;if(!email||!password)return authMsg('Informe e-mail e senha.');authMsg('Entrando...');
+  try{const r=await fetch(SUPABASE_URL+'/auth/v1/token?grant_type=password',{method:'POST',headers:cloudHeaders(),body:JSON.stringify({email,password})});const d=await r.json();if(!r.ok)throw new Error(d.msg||d.message||'Falha no login');cloudAuth=d;localStorage.setItem(AUTH_STORAGE_KEY,JSON.stringify(d));await afterCloudLogin();document.getElementById('cloudAuthDialog').close();btoast('Nuvem conectada');}catch(e){authMsg(e.message);}
+}
+function cloudSignOut(show=true){cloudAuth=null;localStorage.removeItem(AUTH_STORAGE_KEY);updateCloudUI();if(show)btoast('Nuvem desconectada');}
+function updateCloudUI(){const ok=!!cloudAuth?.access_token,txt=document.getElementById('cloudStatusText'),dot=document.getElementById('cloudDot'),btn=document.getElementById('cloudLoginBtn'),badge=document.getElementById('queueAuthBadge');if(txt)txt.textContent=ok?'Nuvem conectada':'Nuvem desconectada';if(dot)dot.style.background=ok?'var(--green)':'var(--yellow)';if(btn)btn.textContent=ok?'Conta / Sair':'Conectar nuvem';if(badge){badge.textContent=ok?'autenticado':'login necessário';badge.className='badge '+(ok?'good':'mid');}}
+async function afterCloudLogin(){updateCloudUI();await bootstrapCloudIfEmpty();await refreshWorkQueue();await refreshCloudDataSummary();}
+function seedRowsForCloud(){const p=state.portfolio,rows=[];for(const x of p.currentSnapshot)rows.push({asset_key:x.id.toUpperCase().replace(/[^A-Z0-9]+/g,'_'),asset_name:x.asset,asset_class:x.class,institution_name:x.institution,currency:x.currency||'BRL',cost_basis:x.amount,market_value:x.amount,status:'needs_refresh',confidence:'historical',thesis:x.thesis,last_verified_at:'2026-09-24T12:00:00Z',source_note:x.status,metadata:{seed_source:'conversation_snapshot'}});for(const x of p.positions)rows.push({asset_key:x.ticker||x.id,ticker:x.ticker||null,asset_name:x.asset,asset_class:x.class,institution_name:x.institution,currency:x.currency||'BRL',quantity:x.qty||null,average_price:x.avgPrice||null,cost_basis:x.amount||null,market_value:x.amount||null,status:'current',confidence:'confirmed',thesis:x.thesis,last_verified_at:'2026-09-24T12:00:00Z',source_note:x.status,metadata:{seed_source:'confirmed_position'}});for(const x of p.historicalOrNeedsRefresh)rows.push({asset_key:(x.ticker||x.id).toUpperCase().replace(/[^A-Z0-9]+/g,'_'),ticker:x.ticker||null,asset_name:x.asset,asset_class:x.class,institution_name:x.institution,currency:x.currency||'BRL',cost_basis:x.amount||null,market_value:x.amount||null,status:'needs_refresh',confidence:'historical',thesis:x.thesis,last_verified_at:'2026-09-15T12:00:00Z',source_note:x.status,metadata:{seed_source:'historical_record'}});return rows;}
+async function bootstrapCloudIfEmpty(){
+  try{
+    let changed=false;
+
+    const snaps=await supaRest('portfolio_snapshots','GET','select=id&limit=1');
+    if(!snaps?.length){
+      await supaRest('portfolio_snapshots','POST','',[{
+        snapshot_date:'2026-09-24',
+        total_value:state.portfolio.identifiedTotal,
+        base_currency:'BRL',
+        allocation:{source:'recovered_base'},
+        source:'Investidor Visionário OS',
+        notes:'Fotografia-base recuperada de análises anteriores. Atualizar antes de decisões.'
+      }]);
+      changed=true;
+    }
+
+    const existingPositions=await supaRest('portfolio_positions','GET','select=id,asset_key&limit=500');
+    if(!existingPositions?.length){
+      const rows=seedRowsForCloud();
+      if(rows.length) await supaRest('portfolio_positions','POST','',rows);
+      changed=true;
+    }
+
+    const settings=await supaRest('user_settings','GET','select=owner_id&limit=1');
+    if(!settings?.length){
+      await supaRest('user_settings','POST','',[{
+        base_currency:'BRL',
+        risk_profile:'equilibrado_com_nucleo_defensivo',
+        target_allocation:{defensive_pct:90,growth_pct:10},
+        short_term_capital_limit:5000,
+        short_term_risk_per_trade_pct:0.5,
+        preferences:{learning_mode:true,require_sources:true,human_approval_for_trades:true}
+      }]);
+      changed=true;
+    }
+
+    if(changed) btoast('Sincronização inicial da nuvem concluída');
+    await refreshCloudDataSummary();
+  }catch(e){
+    console.warn(e);
